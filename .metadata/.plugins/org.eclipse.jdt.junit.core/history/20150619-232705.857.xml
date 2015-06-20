@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CallGraphTester" project="CallGraphTester" tests="24" started="24" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.DetailsTests" incomplete="true">
+    <testcase name="uncalledMethodExistenceTest" classname="tests.DetailsTests" incomplete="true"/>
+    <testcase name="uncalledMethodInEdgeTest" classname="tests.DetailsTests" incomplete="true"/>
+    <testcase name="initializersTest" classname="tests.DetailsTests" incomplete="true"/>
+    <testcase name="mutualRecursionTest" classname="tests.DetailsTests" incomplete="true"/>
+    <testcase name="indirectRecursionTest" classname="tests.DetailsTests" incomplete="true"/>
+    <testcase name="inheritanceMethodEdge" classname="tests.DetailsTests" incomplete="true"/>
+  </testsuite>
+  <testsuite name="tests.SanityTests" incomplete="true">
+    <testcase name="SampleOneBasicSanity" classname="tests.SanityTests" incomplete="true"/>
+    <testcase name="SampleTwoSanity" classname="tests.SanityTests" incomplete="true"/>
+    <testcase name="SampleThreeSanity" classname="tests.SanityTests" incomplete="true"/>
+  </testsuite>
+  <testsuite name="tests.GraphConstructionsTests" incomplete="true">
+    <testcase name="SampleOneConstruction" classname="tests.GraphConstructionsTests" incomplete="true"/>
+    <testcase name="SampleTwoConstruction" classname="tests.GraphConstructionsTests" incomplete="true"/>
+    <testcase name="SampleThreeConstruction" classname="tests.GraphConstructionsTests" incomplete="true"/>
+  </testsuite>
+  <testsuite name="tests.AllTests" time="2.285">
+    <testsuite name="tests.GraphConstructionsTests" time="2.116">
+      <testcase name="SampleOneConstruction" classname="tests.GraphConstructionsTests" time="0.625"/>
+      <testcase name="SampleTwoConstruction" classname="tests.GraphConstructionsTests" time="0.748"/>
+      <testcase name="SampleThreeConstruction" classname="tests.GraphConstructionsTests" time="0.61"/>
+    </testsuite>
+    <testsuite name="tests.SanityTests" time="2.285">
+      <testcase name="SampleOneBasicSanity" classname="tests.SanityTests" time="0.569"/>
+      <testcase name="SampleTwoSanity" classname="tests.SanityTests" time="0.724"/>
+      <testcase name="SampleThreeSanity" classname="tests.SanityTests" time="0.596"/>
+    </testsuite>
+    <testsuite name="tests.DetailsTests" time="10.008">
+      <testcase name="uncalledMethodExistenceTest" classname="tests.DetailsTests" time="0.55"/>
+      <testcase name="uncalledMethodInEdgeTest" classname="tests.DetailsTests" time="0.574"/>
+      <testcase name="initializersTest" classname="tests.DetailsTests" time="0.66"/>
+      <testcase name="mutualRecursionTest" classname="tests.DetailsTests" time="0.785"/>
+      <testcase name="indirectRecursionTest" classname="tests.DetailsTests" time="0.652"/>
+      <testcase name="inheritanceMethodEdge" classname="tests.DetailsTests" time="0.594"/>
+    </testsuite>
+  </testsuite>
+</testrun>

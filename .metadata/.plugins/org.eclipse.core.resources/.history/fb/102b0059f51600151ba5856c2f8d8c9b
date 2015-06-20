@@ -1,0 +1,100 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+import com.ibm.wala.ipa.callgraph.CallGraph;
+import com.ibm.wala.ipa.callgraph.CallGraphBuilderCancelException;
+import com.ibm.wala.ipa.cha.ClassHierarchyException;
+
+import util.CGUtils;
+import util.StringGraph;
+
+/**
+ * This class performs detailed tests
+ * */
+public class DetailsTests {
+	
+	/*Tests using SampleOne*/
+	//samples.SampleOne.uncalledMethod()V is never called
+	@Test
+	public void uncalledMethodExistenceTest(){	
+
+		try {
+			CallGraph cg;
+			StringGraph graph;			
+			cg = CGUtils.buildCG(SamplePaths.SAMPLE_ONE);
+			graph = new StringGraph(cg);
+			assertFalse(graph.nodes.containsKey("samples.SampleOne.metodoNaoChamado()V"));
+		} catch (Exception e) { fail(e.getMessage()); }			
+	}
+	
+	@Test
+	public void uncalledMethodInEdgeTest(){	
+		try {
+			CallGraph cg;
+			StringGraph graph;			
+			cg = CGUtils.buildCG(SamplePaths.SAMPLE_ONE);
+			graph = new StringGraph(cg);
+			for(String node : graph.nodes.keySet() ){
+				assertFalse(graph.nodes.get(node).contains("samples.SampleOne.metodoNaoChamado()V"));
+			}
+		} catch (Exception e) { fail(e.getMessage()); }			
+	}
+
+	
+	/* Tests using SampleTwo  */
+	
+	@Test
+	public void mutualRecursionTest() {
+		try {
+			CallGraph cg;
+			StringGraph graph;			
+			cg = CGUtils.buildCG(SamplePaths.SAMPLE_TWO);
+			graph = new StringGraph(cg);
+			ArrayList<String> edges = graph.nodes.get("samples.SampleTwo.recursaoMutuaA(II)I");
+			assertTrue(edges.contains("samples.SampleTwo.recursaoMutuaB(II)I"));
+		} catch (Exception e) { fail(e.getMessage()); }
+	}
+	
+	@Test
+	public void indirectRecursionTest(){
+		try {
+			CallGraph cg;
+			StringGraph graph;			
+			cg = CGUtils.buildCG(SamplePaths.SAMPLE_TWO);
+			graph = new StringGraph(cg);
+			ArrayList<String> edges;
+			edges = graph.nodes.get("samples.SampleTwo.recursaoMutuaA(Ljava/lang/String;)Ljava/lang/String;");
+			assertTrue(edges.contains("samples.SampleTwo.recursaoMutuaB(Ljava/lang/String;)Ljava/lang/String;"));
+
+		} catch (Exception e) { fail(e.getMessage()); }			
+	}
+	
+	
+	/* Tests using SampleThree  */	
+	
+	@Test
+	public void inheritanceMethodEdge(){
+		try {
+			CallGraph cg;
+			StringGraph graph;			
+			cg = CGUtils.buildCG(SamplePaths.SAMPLE_THREE);
+			graph = new StringGraph(cg);
+			ArrayList<String> edges;	
+			edges = graph.nodes.get("samples.SampleThree.metodoHerdado()I");
+			assertTrue(edges.contains("samples.classePai.metodoHerdado()I")); // parent class
+		
+			edges = graph.nodes.get("samples.classePai.metodoHerdado()I");
+			assertFalse(edges.contains("samples.SampleThree.metodoHerdado()I"));
+			
+		} catch (Exception e) { fail(e.getMessage()); }			
+	}	
+
+
+}

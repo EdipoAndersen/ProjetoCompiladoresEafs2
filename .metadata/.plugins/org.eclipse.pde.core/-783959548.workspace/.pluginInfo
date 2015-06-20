@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<bundle bundleID="390" class="com.ibm.wala.core.tests.plugin.CoreTestsPlugin" localization="plugin" name="%pluginName" project="com.ibm.wala.core.tests" provider="%providerName"/>
+	<bundle bundleID="391" class="com.ibm.wala.ide.plugin.CorePlugin" localization="plugin" name="%pluginName" project="com.ibm.wala.ide" provider="%providerName"/>
+	<bundle bundleID="393" localization="OSGI-INF/l10n/bundle" name="WALA Util" project="com.ibm.wala.util" provider="IBM">
+		<library name="walaUtil.jar"/>
+	</bundle>
+	<bundle bundleID="392" localization="plugin" name="%pluginName" project="com.ibm.wala.shrike" provider="%providerName"/>
+	<bundle bundleID="389" localization="plugin" name="%pluginName" project="com.ibm.wala.core" provider="%providerName"/>
+</map>
